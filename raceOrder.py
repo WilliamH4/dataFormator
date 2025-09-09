@@ -1,5 +1,5 @@
 import csv
-filename="X-Country Season Stats 2025.xlsx - Boys.csv"
+filename="raceData.csv"
 fields=[]
 rows=[]
 columns=[]
@@ -106,4 +106,4 @@ for runner in sortedlist:
         strnum='0'+str(numrunner)
     else:
         strnum=str(numrunner)
-    print(strnum,runner[0],"avarage pace: ",secToPace(average(runner[1:])))
+    print(strnum,runner[0],"avarage 5K pace: ",secToPace(average(runner[1:])))

@@ -73,14 +73,16 @@ for racer in paces:
 #print(paces)
 def average(dataList):#used to take the avarege of the data part of the list
     try:
+        #del dataList[0]#removes redondo
         return sum(dataList)/len(dataList)
-    except:#returns if no data
+    except Exception as e:#returns if no data
+        #print (e)
         return 1200
 
 def secToPace(seconds):
     if seconds==1200:
         return 'DNR'
-    mins,secs =divmod(seconds*3.1,60)
+    mins,secs =divmod(seconds*3,60)
     if secs<10:
         secs='0'+str(secs)
     else:
@@ -106,4 +108,4 @@ for runner in sortedlist:
         strnum='0'+str(numrunner)
     else:
         strnum=str(numrunner)
-    print(strnum,runner[0],"avarage 5K pace: ",secToPace(average(runner[1:])))
+    print(strnum,runner[0],"average 3 mile:",secToPace(average(runner[1:])))

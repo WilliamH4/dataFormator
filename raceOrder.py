@@ -79,6 +79,21 @@ def average(dataList):#used to take the avarege of the data part of the list
         #print (e)
         return 1200
 
+def findPR(dataList):
+    try:
+        del dataList[0]
+        PR=dataList[0]
+        for race in dataList:
+            try:
+                if race<PR and race!=0:
+                    PR=race
+                    PR=float(PR)
+            except:
+                pass
+        return PR if type(PR) == float else 1200
+    except Exception as e:
+        #print (e)
+        return 1200
 def secToPace(seconds):
     if seconds==1200:
         return 'DNR'
@@ -97,7 +112,7 @@ def secToPace(seconds):
     return mins+':'+secs
 
 
-sortedlist = sorted(paces, key=lambda x: average(x[1:]))
+sortedlist = sorted(paces, key=lambda x: findPR(x[1:]))
 numrunner=0
 for runner in sortedlist:
     runner[0],blank=runner[0].split()
@@ -108,4 +123,4 @@ for runner in sortedlist:
         strnum='0'+str(numrunner)
     else:
         strnum=str(numrunner)
-    print(strnum,runner[0],"average 3 mile:",secToPace(average(runner[1:])))
+    print(strnum,runner[0],"average 3 mile:",secToPace(findPR(runner[1:])))
